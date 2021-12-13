@@ -1,0 +1,21 @@
+package util;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.kafka.common.serialization.Serializer;
+
+public class CustomSerializer<T> implements Serializer<T> {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    @Override
+    public byte[] serialize(String s, T object) {
+        try {
+            objectMapper.findAndRegisterModules();
+            return objectMapper.writeValueAsBytes(object);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
