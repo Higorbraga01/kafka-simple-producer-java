@@ -1,9 +1,9 @@
-package model;
+package dto;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
 
-public class Operacao {
+public class OperacaoDTO {
 
     private Long id;
 
@@ -31,7 +31,7 @@ public class Operacao {
 
     private String codigoUnidadeCredora;
 
-    public Operacao(Long id, Long numeroCreditoSolicitacao, LocalDate dataOperacao, String tipoOperacao, Long acaoOrcamentariaId, Long programaOrcamentarioId, Long planoOrcamentarioId, Long planoInternoId, Long naturezaDespesaId, String justificativaOperacao, BigInteger valorOperacao, String codigoUnidadeExecutora, String codigoUnidadeCredora) {
+    public OperacaoDTO(Long id, Long numeroCreditoSolicitacao, LocalDate dataOperacao, String tipoOperacao, Long acaoOrcamentariaId, Long programaOrcamentarioId, Long planoOrcamentarioId, Long planoInternoId, Long naturezaDespesaId, String justificativaOperacao, BigInteger valorOperacao, String codigoUnidadeExecutora, String codigoUnidadeCredora) {
         this.id = id;
         this.numeroCreditoSolicitacao = numeroCreditoSolicitacao;
         this.dataOperacao = dataOperacao;

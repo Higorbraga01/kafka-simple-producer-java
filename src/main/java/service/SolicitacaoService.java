@@ -1,8 +1,8 @@
 package service;
 
 import kafka.producer.KafkaDispatcher;
-import model.Operacao;
-import model.Solicitacao;
+import dto.OperacaoDTO;
+import dto.SolicitacaoDTO;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -14,26 +14,26 @@ import java.util.concurrent.ExecutionException;
 public class SolicitacaoService {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        try (KafkaDispatcher orderDispatcher = new KafkaDispatcher<Solicitacao>()) {
-            Solicitacao solicitacao = criarSolicitacao();
+        try (KafkaDispatcher orderDispatcher = new KafkaDispatcher<SolicitacaoDTO>()) {
+            SolicitacaoDTO solicitacao = criarSolicitacao();
             orderDispatcher.send("ALTERACAO_ORCAMENTARIA", solicitacao.getNumeroCreditoSolicitacao(), solicitacao);
         }
     }
 
-    private static Solicitacao criarSolicitacao() {
-        Operacao anulacao = new Operacao(
+    private static SolicitacaoDTO criarSolicitacao() {
+        OperacaoDTO anulacao = new OperacaoDTO(
                 1L, 1L, LocalDate.now(), "Anulacao", 386L,
                 522L, 732L, 777L, 999L,
                 "Rquero", new BigInteger("20000"), "222298",
                 "222278");
-        Operacao complementacao = new Operacao(
+        OperacaoDTO complementacao = new OperacaoDTO(
                 2L, 1L, LocalDate.now(), "Complementacao", 386L,
                 522L, 732L, 777L, 999L,
                 "Rquero", new BigInteger("20000"), "222298",
                 "222278");
-        List<Operacao> operacoes = new ArrayList<>();
+        List<OperacaoDTO> operacoes = new ArrayList<>();
         operacoes.addAll(Arrays.asList(anulacao, complementacao));
-        Solicitacao solicitacao = new Solicitacao(
+        SolicitacaoDTO solicitacao = new SolicitacaoDTO(
                 1L, operacoes,"2021","Fernando Tomasio", LocalDate.now(),
                 "222298","N/A");
         return solicitacao;

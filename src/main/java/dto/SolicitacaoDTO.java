@@ -1,14 +1,14 @@
-package model;
+package dto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solicitacao {
+public class SolicitacaoDTO {
 
     private Long numeroCreditoSolicitacao;
 
-    private List<Operacao> operacoes = new ArrayList<>();
+    private List<OperacaoDTO> operacoes = new ArrayList<>();
 
     private String exercicio;
 
@@ -20,7 +20,7 @@ public class Solicitacao {
 
     private String descricaoSolicitacao;
 
-    public Solicitacao(Long numeroCreditoSolicitacao, List<Operacao> operacoes, String exercicio, String nomeExecutor, LocalDate dataSolicitacao, String codigoUnidadeSolicitante, String descricaoSolicitacao) {
+    public SolicitacaoDTO(Long numeroCreditoSolicitacao, List<OperacaoDTO> operacoes, String exercicio, String nomeExecutor, LocalDate dataSolicitacao, String codigoUnidadeSolicitante, String descricaoSolicitacao) {
         this.numeroCreditoSolicitacao = numeroCreditoSolicitacao;
         this.operacoes = operacoes;
         this.exercicio = exercicio;
@@ -38,11 +38,11 @@ public class Solicitacao {
         this.numeroCreditoSolicitacao = numeroCreditoSolicitacao;
     }
 
-    public List<Operacao> getOperacoes() {
+    public List<OperacaoDTO> getOperacoes() {
         return operacoes;
     }
 
-    public void setOperacoes(List<Operacao> operacoes) {
+    public void setOperacoes(List<OperacaoDTO> operacoes) {
         this.operacoes = operacoes;
     }
 
