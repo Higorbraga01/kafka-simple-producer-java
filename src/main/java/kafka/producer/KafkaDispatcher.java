@@ -16,7 +16,7 @@ public class KafkaDispatcher<T> implements Closeable {
         this.producer = new KafkaProducer<>(ProducerConfiguration.properties());
     }
 
-    public void send(String topic, Long key, Object value) throws ExecutionException, InterruptedException {
+    public void send(String topic, String key, Object value) throws ExecutionException, InterruptedException {
         ProducerRecord record = new ProducerRecord<>(topic, key, value);
         Callback callback = (data, ex) -> {
             if (ex != null) {

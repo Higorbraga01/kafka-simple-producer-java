@@ -16,7 +16,7 @@ public class SolicitacaoService {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         try (KafkaDispatcher orderDispatcher = new KafkaDispatcher<SolicitacaoDTO>()) {
             SolicitacaoDTO solicitacao = criarSolicitacao();
-            orderDispatcher.send("ALTERACAO_ORCAMENTARIA", solicitacao.getNumeroCreditoSolicitacao(), solicitacao);
+            orderDispatcher.send("ALTERACAO_ORCAMENTARIA", solicitacao.getNumeroCreditoSolicitacao().toString(), solicitacao);
         }
     }
 
